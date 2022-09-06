@@ -1,10 +1,11 @@
 import {PetInformation} from './components/PetInformation'
+import { ApplicationRootStyles } from './utils/styles';
 
 function App() {
   return (
-    <div className="App">
+    <ApplicationRootStyles>
       <PetInformation />
-    </div>
+    </ApplicationRootStyles>
   );
 }
 
