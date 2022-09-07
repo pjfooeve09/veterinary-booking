@@ -15,15 +15,15 @@ export const PetInformation = () => {
     formState: { errors },
   } = useForm();
 
-  console.log(errors);
+  // console.log(errors);
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
   };
 
   const onError = (errors, error) => {
-    console.log(errors);
-    console.log(error);
+    console.log(errors.firstName);
+    // console.log(error);
   };
 
   return (
@@ -79,8 +79,26 @@ export const PetInformation = () => {
           </Flex>
           <InputField
             id="email"
+            type="email"
             {...register("email", {
               required: "Email Required",
+            })}
+          />
+        </InputContainer>
+        <InputContainer style={{ margin: "2px 0" }} error={errors.mobile}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <InputLabel htmlFor="mobile" children="Mobile" />
+            {errors.mobile && <InputError children={errors.mobile.message} />}
+          </Flex>
+          <InputField
+            id="mobile"
+            maxLength={10}
+            {...register("mobile", {
+              required: "Mobile Required",
+              pattern: {
+                message: "Invalid Mobile Number",
+                value: /^\d{10}$/,
+              },
             })}
           />
         </InputContainer>

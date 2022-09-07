@@ -1,10 +1,11 @@
-import {PetInformation} from './components/PetInformation'
 import { ApplicationRootStyles } from './utils/styles';
+import { getCurrentForm } from './utils/helpers';
+import { STEPS } from './utils/constants';
 
 function App() {
   return (
     <ApplicationRootStyles>
-      <PetInformation />
+      {getCurrentForm(STEPS.PET_INFORMATION)}
     </ApplicationRootStyles>
   );
 }

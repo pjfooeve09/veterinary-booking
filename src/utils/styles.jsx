@@ -72,4 +72,13 @@ export const Button = styled.button`
   :active {
     background-color: #2f74ff;
   }
+  ${(props) =>
+    props.secondary &&
+    css`
+      background-color: #8d2727;
+      border: 1px solid #0a0606;
+      :hover {
+        background-color: #6a32329e;
+      }
+    `}
 `;
