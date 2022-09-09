@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { FormStepContext } from "../utils/FormStepContext";
+import { FormStepContext } from "../utils/contexts/FormStepContext";
 import { STEPS } from "../utils/constants";
 import {
   InputField,
@@ -18,7 +18,7 @@ export const PetInformation = () => {
     formState: { errors },
   } = useForm();
 
-  const { step, setStep } = useContext(FormStepContext);
+  const { setStep } = useContext(FormStepContext);
 
   const onSubmit = (data) => {
     setStep(STEPS.SERVICE_APPOINTMENT);

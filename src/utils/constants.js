@@ -5,3 +5,13 @@ export const STEPS = {
    ERROR: 'ERROR_STEP',
    SUCCESS: 'SUCCESS_STEP',
 }
+
+export const defaultFields = {
+  contact: {
+    firstName: '',
+    lastName: '',
+  },
+  petName: '',
+  email: '',
+  mobile: ''
+}

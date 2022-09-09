@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { FormStepContext } from "../utils/FormStepContext";
+import { FormStepContext } from "../utils/contexts/FormStepContext";
 import { STEPS } from "../utils/constants";
 import {
   InputField,
@@ -20,7 +20,9 @@ export const ServiceAppointment = () => {
 
   const { setStep } = useContext(FormStepContext);
 
-  const goBack = () => {};
+  const goBack = () => {
+    setStep(STEPS.PET_INFORMATION);
+  };
 
   const onSubmit = (data) => {
     setStep(STEPS.REVIEW);
@@ -52,6 +54,7 @@ export const ServiceAppointment = () => {
             children="Back"
             secondary
             style={{ margin: "0 10px" }}
+            onClick={goBack}
           />
           <Button children="Next" />
         </Flex>
