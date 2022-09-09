@@ -1,4 +1,7 @@
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { FormStepContext } from "../utils/FormStepContext";
+import { STEPS } from "../utils/constants";
 import {
   InputField,
   InputContainer,
@@ -15,10 +18,12 @@ export const ServiceAppointment = () => {
     formState: { errors },
   } = useForm();
 
+  const { setStep } = useContext(FormStepContext);
+
   const goBack = () => {};
 
   const onSubmit = (data) => {
-    // console.log(data);
+    setStep(STEPS.REVIEW);
   };
 
   const onError = (errors, error) => {
