@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { defaultFields } from "../constants";
 
-export const FormFieldContext = createContext({
+export const FormFieldsContext = createContext({
   fields: defaultFields,
   updateFields: () => {},
 });

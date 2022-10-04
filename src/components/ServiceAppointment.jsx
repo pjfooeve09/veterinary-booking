@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { FormStepContext } from "../utils/contexts/FormStepContext";
-import { STEPS } from "../utils/constants";
+import { FIELDS, STEPS } from "../utils/constants";
+import { useFormStateContext } from "../utils/hooks";
 import {
   InputField,
   InputContainer,
@@ -18,13 +19,14 @@ export const ServiceAppointment = () => {
     formState: { errors },
   } = useForm();
 
-  const { setStep } = useContext(FormStepContext);
+  const { setStep, updateFields } = useFormStateContext();
 
   const goBack = () => {
     setStep(STEPS.PET_INFORMATION);
   };
 
   const onSubmit = (data) => {
+    updateFields(FIELDS.SERVICE_APPOINTMENT, data);
     setStep(STEPS.REVIEW);
   };
 

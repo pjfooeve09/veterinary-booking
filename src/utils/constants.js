@@ -6,6 +6,11 @@ export const STEPS = {
    SUCCESS: 'SUCCESS_STEP',
 }
 
+export const FIELDS = {
+  PET_INFORMATION: 'pet_information',
+  SERVICE_APPOINTMENT: 'service_appointment',
+}
+
 export const defaultFields = {
   contact: {
     firstName: '',

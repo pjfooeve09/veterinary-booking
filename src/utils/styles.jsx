@@ -82,3 +82,14 @@ export const Button = styled.button`
       }
     `}
 `;
+
+export const InputFieldDetails = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  background-color: inherit;
+  color: white;
+  padding: 0;
+  font-size: 0.8rem;
+  margin: 4px 0px;
+  font-family: "Assistant", sans-serif;
+`;

@@ -3,7 +3,7 @@ import { getCurrentForm } from './utils/helpers';
 import { FormStepContext } from './utils/contexts/FormStepContext';
 import { defaultFields, STEPS } from './utils/constants';
 import { useState } from 'react';
-import { FormFieldContext } from './utils/contexts/FormFieldsContext';
+import { FormFieldsContext } from './utils/contexts/FormFieldsContext';
 
 function App() {
 
@@ -17,11 +17,11 @@ function App() {
   }
   return (
     <FormStepContext.Provider value={{step, setStep}}>
-      <FormFieldContext.Provider value={{fields, updateFields}}>
+      <FormFieldsContext.Provider value={{fields, updateFields}}>
         <ApplicationRootStyles>
           {getCurrentForm(step)}
         </ApplicationRootStyles>
-      </FormFieldContext.Provider>
+      </FormFieldsContext.Provider>
     </FormStepContext.Provider>
   );
 }
