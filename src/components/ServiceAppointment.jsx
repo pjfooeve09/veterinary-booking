@@ -13,13 +13,16 @@ import {
 } from "../utils/styles";
 
 export const ServiceAppointment = () => {
+  const { fields, setStep, updateFields } = useFormStateContext();
   const {
     register, //register saves data and handles validation
     handleSubmit,
     formState: { errors },
-  } = useForm();
-
-  const { setStep, updateFields } = useFormStateContext();
+  } = useForm({
+    defaultValues: {
+      ...fields.service_appointment,
+    },
+  });
 
   const goBack = () => {
     setStep(STEPS.PET_INFORMATION);

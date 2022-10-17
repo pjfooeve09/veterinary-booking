@@ -18,7 +18,7 @@ export const PetInformation = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      ...fields.contact,
+      ...fields.pet_information,
     },
   });
 
