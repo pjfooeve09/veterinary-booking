@@ -1,6 +1,4 @@
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import { FormStepContext } from "../utils/contexts/FormStepContext";
 import { FIELDS, STEPS } from "../utils/constants";
 import { useFormStateContext } from "../utils/hooks";
 import {
@@ -11,10 +9,17 @@ import {
   Flex,
   Button,
 } from "../utils/styles";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import React, { useState } from "react";
+import moment from "moment";
+import { SuccessStep } from "../components/SuccessStep";
 
 export const ServiceAppointment = () => {
+  const [dateState, setDateState] = useState(new Date());
   const { fields, setStep, updateFields } = useFormStateContext();
   const {
+    reset,
     register, //register saves data and handles validation
     handleSubmit,
     formState: { errors },
@@ -33,26 +38,46 @@ export const ServiceAppointment = () => {
     setStep(STEPS.REVIEW);
   };
 
-  const onError = (errors, error) => {
-    // console.log(error);
+  const changeDate = (e) => {
+    setDateState(e);
+    register("calendar", {
+      value: moment(e).format("MMMM Do YYYY"),
+    });
+    reset({ value: moment(e).format("MMMM Do YYYY") });
   };
 
   return (
     <div class="base-form">
-      <form onSubmit={handleSubmit(onSubmit, onError)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <InputContainer style={{ margin: "2px 0" }} error={errors.service}>
           <Flex alignItems="center" justifyContent="space-between">
-            <InputLabel htmlFor="service" children="Select Service Type" />
+            <InputLabel
+              htmlFor="service"
+              children="What type of service do you need?"
+            />
             {errors.service && <InputError children={errors.service.message} />}
           </Flex>
           <InputField
             id="service"
             {...register("service", {
               //this is where we set up validation rules:
-              required: "Please Select Service Type",
+              required: "Please Specify Service Type",
             })}
           />
         </InputContainer>
+
+        <InputContainer style={{ margin: "2px 0" }} error={errors.service}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <InputLabel htmlFor={dateState} children="Select Date" />
+            {errors.dateState && <InputError children={errors.date.message} />}
+          </Flex>
+          <Calendar value={dateState} onChange={changeDate} />
+          <p>
+            Current selected date is{" "}
+            <b>{moment(dateState).format("MMMM Do YYYY")}</b>
+          </p>
+        </InputContainer>
+
         <Flex justifyContent="flex-end">
           <Button
             type="button"

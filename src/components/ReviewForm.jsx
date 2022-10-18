@@ -8,12 +8,12 @@ import {
 import { STEPS } from "../utils/constants";
 import { useFormStateContext } from "../utils/hooks";
 import { SuccessStep } from "../components/SuccessStep";
-import axios from "axios";
 import React, { useState } from "react";
 
 export const ReviewForm = () => {
   const [shouldShowNextPage, setShouldShowNextPage] = useState(false);
   const { setStep, fields } = useFormStateContext();
+  console.log(fields.service_appointment.value);
   const [petName, setPetName] = useState(fields.pet_information.firstName);
   const goBack = () => {
     setStep(STEPS.SERVICE_APPOINTMENT);
@@ -78,6 +78,14 @@ export const ReviewForm = () => {
               </Flex>
               <InputFieldDetails>
                 {fields.service_appointment.service}
+              </InputFieldDetails>
+            </InputContainer>
+            <InputContainer style={{ margin: "2px 0" }}>
+              <Flex alignItems="center" justifyContent="space-between">
+                <InputLabel children="Date" />
+              </Flex>
+              <InputFieldDetails>
+                {fields.service_appointment.value}
               </InputFieldDetails>
             </InputContainer>
             <Flex justifyContent="flex-end">
